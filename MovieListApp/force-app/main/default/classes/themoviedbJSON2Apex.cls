@@ -1,3 +1,8 @@
+/*
+------------------------------------------------------------------------------------------------------------------------------------------
+Below Class is Created For Search Movie Lists Through TMDB API 
+------------------------------------------------------------------------------------------------------------------------------------------
+*/
 Global class themoviedbJSON2Apex {
     
     @AuraEnabled
@@ -8,7 +13,7 @@ Global class themoviedbJSON2Apex {
         
         String endpoint = 'https://api.themoviedb.org/3/search/movie?query='+query+'&include_adult=false&language=en-US&page=1';
                           
-        String authorizationHeader = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZjUxYjVjMDQ0ZDMwYjA4MGM5Y2Q3NTY5YzFhYjM3YyIsInN1YiI6IjY0NjI3MmE2MGYzNjU1MDBmY2RmNWNhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._tP3CSn2z7pamoYJBgnP3XQ5qDWT5rhU3lB_q6NupVk';
+        String authorizationHeader = 'Bearer Your Access Token Auth';
         
         request.setEndpoint(endpoint);
         request.setMethod('GET');
@@ -17,8 +22,7 @@ Global class themoviedbJSON2Apex {
         
  try {
             response = http.send(request);
-            System.debug('Request: ' + request);
-            System.debug('Response: ' + response.getBody());
+            
 
             if (response.getStatusCode() == 200) {
                 TheMovieDBResponse movieListResponse = (TheMovieDBResponse) JSON.deserialize(response.getBody(), TheMovieDBResponse.class);
