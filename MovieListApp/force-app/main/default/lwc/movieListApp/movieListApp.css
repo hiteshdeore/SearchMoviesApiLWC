@@ -1,0 +1,118 @@
+.headertext {
+    font-size: 4rem;
+    color: #0059ff;
+    text-align: center;
+    font-weight: 500;
+    margin: 0 auto; /* Add this line to center the text */
+  }
+.background {
+  background: #1b1a1a;
+}
+  .search-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input {
+    flex: 1;
+    background: #f9f9f9;
+    border: 1px solid #1400f5;
+    border-radius: 5px;
+  }
+  
+  .search-button {
+    margin-left: 10px;
+  }
+  .grid-wrapper {
+    /*you can use display grid and start adding cards in a row*/
+    /*display: grid;*/
+    grid-template-columns: repeat(4, 1fr);
+   
+    grid-gap: 15px; /* Gap between movies */
+    padding-top: 20px;
+   
+  }
+  
+  .card-title{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(255, 0, 255);
+    font-weight: bolder;
+    padding-top: 5px;
+    font-size: large;
+}
+.card-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(8, 247, 255);
+    font-weight: bold;
+}
+.card-rating {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: rgb(34, 0, 255);
+    font-weight: bold;
+}
+.card-date {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+  .card-container {
+    display: grid;
+    place-items: center;
+    perspective: 700px;
+    padding-bottom: 30px;
+  }
+  
+  .card-flip {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "frontAndBack";
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+  }
+  
+  .front {
+    grid-area: frontAndBack;
+    background-color: #1b1a1a !important;
+    backface-visibility: hidden;
+    border: 5px solid #ffffff;
+    
+  }
+  
+  .back {
+    grid-area: frontAndBack;
+    transform: rotateY(180deg);
+    background-color: #1b1a1a !important;
+    backface-visibility: hidden;
+    opacity: 0;
+ 
+  
+  }
+  
+  .card-container:hover .card-flip {
+    transform: rotateY(180deg);
+  }
+  
+  .card-container:hover .back {
+    opacity: 1;
+  }
+ .warning{
+  font-size: larger;
+  font-weight: 900;
+  color: red;
+  border: 1px solid yellow;
+  padding: 10px;
+ }
+
+  
