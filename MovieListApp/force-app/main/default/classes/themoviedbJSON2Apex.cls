@@ -2,7 +2,8 @@
 ------------------------------------------------------------------------------------------------------------------------------------------
 Below Class is Created For Search Movie Lists Through TMDB API 
 ------------------------------------------------------------------------------------------------------------------------------------------
-*/Global class themoviedbJSON2Apex {
+*/
+Global class themoviedbJSON2Apex {
 	
     /* Api Call For Serching Movies Via query */
     @AuraEnabled
