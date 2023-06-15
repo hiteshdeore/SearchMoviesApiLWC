@@ -1,6 +1,4 @@
 <template>
-
-      
       <div class="background ">
         <div class="search-wrapper">
           <label class="headertext">Search Movies</label>
@@ -36,9 +34,7 @@
                     <div class="card front">
                       <img
                         src={movie.moviePosterUrl}
-                        width="300px"
-                        
-                      />
+                        width="300px" />
                       <div class="card-title">{movie.title}</div>
                       <p class="card-rating">{movie.vote_average}</p>
                       <p class="card-date">
@@ -59,11 +55,9 @@
         </template>
         <template if:true={isNoMoviesFound}>
           <div class="warning slds-text-align_center">
-          <p>No movies found.</p></div> 
+          <p> No Movies Found </p></div> 
       </template>
-  
       </div>
     </div>
-
-  </template>
+</template>
   
