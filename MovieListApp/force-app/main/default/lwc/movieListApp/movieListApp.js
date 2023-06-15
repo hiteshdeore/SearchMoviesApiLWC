@@ -1,10 +1,8 @@
 import { LightningElement, track } from 'lwc';
 import makeApiCall from '@salesforce/apex/themoviedbJSON2Apex.makeAPICall';
-
-//Import your CSS-File from the Static Resources
+import PopularMovies from '@salesforce/apex/themoviedbJSON2Apex.makeAPICallPopularMovies';
 import noHeader from '@salesforce/resourceUrl/NoHeader';
-//Import loadStyle-Method
-import {loadStyle} from "lightning/platformResourceLoader";
+import { loadStyle } from 'lightning/platformResourceLoader';
 
 export default class MovieListApp extends LightningElement {
     @track moviesData;
@@ -14,8 +12,28 @@ export default class MovieListApp extends LightningElement {
     posterPath = '';
 
     connectedCallback() {
+        this.loadNoHeaderStyle();
+        this.loadPopularMovies();
+    }
+
+    loadNoHeaderStyle() {
         loadStyle(this, noHeader)
-            .then(result => {});
+            .then(result => {})
+            .catch(error => {
+                console.error('Error loading NoHeader style:', error);
+            });
+    }
+
+    loadPopularMovies() {
+        PopularMovies()
+            .then(data => {
+                this.isLoading = false;
+                this.moviesData = data;
+                this.updateMoviePosterUrls();
+            })
+            .catch(error => {
+                console.error('Error loading popular movies:', error);
+            });
     }
 
     handleChange(event) {
@@ -30,14 +48,20 @@ export default class MovieListApp extends LightningElement {
             .then(data => {
                 this.isLoading = false;
                 this.moviesData = data;
-                console.log('Data:::' + JSON.stringify(this.moviesData));
-
-                // Loop over each movie and update the poster path
-                this.moviesData.forEach(movie => {
-                    movie.moviePosterUrl = this.constructImageUrl(movie.poster_path);
-                });
+                this.updateMoviePosterUrls();
             })
-            .catch(err => console.log(err));
+            .catch(error => {
+                console.error('Error searching movies:', error);
+            });
+    }
+
+    updateMoviePosterUrls() {
+        if (this.moviesData && this.moviesData.length > 0) {
+            this.moviesData = this.moviesData.map(movie => ({
+                ...movie,
+                moviePosterUrl: this.constructImageUrl(movie.poster_path),
+            }));
+        }
     }
 
     constructImageUrl(posterPath) {
