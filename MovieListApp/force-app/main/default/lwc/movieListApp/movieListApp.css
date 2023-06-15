@@ -3,7 +3,7 @@
     color: #0059ff;
     text-align: center;
     font-weight: 500;
-    margin: 0 auto; /* Add this line to center the text */
+    margin: 0 auto; 
   }
 .background {
   background: #1b1a1a;
@@ -84,7 +84,7 @@
   
   .front {
     grid-area: frontAndBack;
-    background-color: #1b1a1a !important;
+    background-color: #1b1a1a;
     backface-visibility: hidden;
     border: 5px solid #ffffff;
     
@@ -93,7 +93,7 @@
   .back {
     grid-area: frontAndBack;
     transform: rotateY(180deg);
-    background-color: #1b1a1a !important;
+    background-color: #1b1a1a;
     backface-visibility: hidden;
     opacity: 0;
  
@@ -107,12 +107,12 @@
   .card-container:hover .back {
     opacity: 1;
   }
+
  .warning{
-  font-size: larger;
+  font-size: 100px;
   font-weight: 900;
   color: red;
-  border: 1px solid yellow;
-  padding: 10px;
+  border: 25px dotted #0081ff;
+  padding: 200Px;
+  margin: 10px;
  }
-
-  
